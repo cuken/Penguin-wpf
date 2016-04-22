@@ -1,0 +1,71 @@
+﻿<Controls:MetroWindow x:Class="Penguin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:loadin="clr-namespace:LoadingIndicators.WPF;assembly=LoadingIndicators.WPF"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:local="clr-namespace:Penguin"
+        mc:Ignorable="d"
+        Title="Penguin" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles/LoadingWave.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles/LoadingThreeDots.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles/LoadingFlipPlane.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles/LoadingPulse.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/LoadingIndicators.WPF;component/Styles/LoadingDoubleBounce.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <dragablz:TabablzControl ConsolidateOrphanedItems="True">
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController />
+        </dragablz:TabablzControl.InterTabController>
+        <TabItem Header="Main">
+            <Grid>
+                <loadin:LoadingIndicator VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Name="Indicator" SpeedRatio="1" IsActive="true" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
+                <Button x:Name="btn_Start" Content="Button" HorizontalAlignment="Left" Margin="85,64,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Log">
+            <RichTextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" IsReadOnly="True"></RichTextBox>
+        </TabItem>
+        <TabItem Header="Settings">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="_ribbonRadioButtonPanel" Orientation="Vertical" Grid.Column="0">
+                    <TextBox Height="18" Name="Resolution" Width="30" Margin="10,5"/>
+                    <TextBlock Height="20" Name="A1" Text="Integer Word Length" Width="120"/>
+                    <StackPanel x:Name="_wordLength" Orientation="Horizontal">
+                        <TextBox Height="18" Name="textBoxWordLength" Width="30" Margin="10,5"/>
+                        <TextBlock Height="20" Name="textBlockWordLength" Text="Word Length" Width="120"/>
+                    </StackPanel>
+                    <StackPanel x:Name="_integerWordLength" Orientation="Horizontal">
+                        <TextBox Height="18" Name="textBoxIntegerWordLength" Width="30" Margin="10,5"/>
+                        <TextBlock Height="20" Name="textBlockIntegerWordLength" Text="Integer Word Length" Width="120"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="_ribbonRadioButtonPanel2" Grid.Column="1">
+                    <StackPanel x:Name="_max" Orientation="Horizontal">
+                        <TextBox Height="18" Name="maxTextBox" Width="100" Margin="10,5"/>
+                        <TextBlock Height="20" Name="maxTextBlock" Text="Max" Width="120"/>
+                    </StackPanel>
+                    <StackPanel x:Name="_min" Orientation="Horizontal">
+                        <TextBox Height="18" Name="minTextBox" Width="100" Margin="10,5"/>
+                        <TextBlock Height="20" Name="minTextBlock" Text="Min" Width="120"/>
+                    </StackPanel>
+                    <StackPanel x:Name="_delta" Orientation="Horizontal">
+                        <TextBox Height="18" Name="deltaTextBox" Width="100" Margin="10,5"/>
+                        <TextBlock Height="20" Name="delatTextBlock" Text="Delta" Width="120"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </TabItem>        
+    </dragablz:TabablzControl>
+</Controls:MetroWindow>
